@@ -3,7 +3,7 @@ function _is_git_repo
 end
 
 function _git_user_email
-  echo (command git config --get user.email)
+  echo (command git config --get user.email | cut -d@ -f1)
 end
 
 function fish_right_prompt
@@ -11,7 +11,7 @@ function fish_right_prompt
   set -l normal (set_color normal)
 
   if [ (_is_git_repo) ]
-    set git_user_email $blue(_git_user_email)
-    echo -n -s $normal '<' $git_user_email $normal '>'
+    set git_user_email $normal '<' $blue(_git_user_email) $normal '>'
+    echo -n -s $git_user_email
   end
 end
