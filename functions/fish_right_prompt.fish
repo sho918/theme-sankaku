@@ -11,6 +11,6 @@ function fish_right_prompt
   set -l green (set_color green)
   set -l normal (set_color normal)
 
-  set info $normal 'Git: ' $blue(_git_user_email) $normal ' | AWS: ' $green(_awsume_profile)
+  set info $normal $blue(_git_user_email) $normal ' | ' $green(_awsume_profile)
   echo -n -s $info
 end
