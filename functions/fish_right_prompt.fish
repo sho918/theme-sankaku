@@ -2,8 +2,8 @@ function _git_user_email
     echo (command git config --get user.email | cut -d@ -f1)
 end
 
-function _awsume_profile
-    echo (if set -q AWSUME_PROFILE; echo $AWSUME_PROFILE; else; echo '-'; end)
+function _aws_profile
+    echo (if set -q AWS_VAULT; echo $AWS_VAULT; else; echo '-'; end)
 end
 
 function fish_right_prompt
@@ -11,6 +11,6 @@ function fish_right_prompt
     set -l green (set_color green)
     set -l normal (set_color normal)
 
-    set info $normal $blue(_git_user_email) $normal ' | ' $green(_awsume_profile)
+    set info $normal $blue(_git_user_email) $normal ' | ' $green(_aws_profile)
     echo -n -s $info
 end
